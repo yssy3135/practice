@@ -1,4 +1,4 @@
-package com.propagation.User.service.required;
+package com.propagation.User.service.request_new;
 
 import com.propagation.User.domain.User;
 import com.propagation.User.repository.UserRepository;
@@ -12,7 +12,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class UserServicePropagationRequiredChild {
+public class UserServicePropagationRequestNewChild {
 
     private final UserRepository userRepository;
 
@@ -29,10 +29,18 @@ public class UserServicePropagationRequiredChild {
         userRepository.delete(user);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void updateChild(Long id) {
+
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
         user.updateName("child");
+
+    }
+    public void updateChildNoTx(Long id) {
+
+        User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
+        user.updateName("child");
+
     }
 
 

@@ -5,6 +5,7 @@ import com.propagation.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 
@@ -32,15 +33,19 @@ public class UserServicePropagationRequired {
     }
 
 
-    @Transactional()
+    @Transactional(propagation = Propagation.REQUIRED)
     public void updateParent(Long id) {
-        log.info("call parent tx");
-        log.info("parent tx name = {}", TransactionSynchronizationManager.getCurrentTransactionName());
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
 
         user.updateName("parent");
         userServicePropagationRequiredChild.updateChild(id);
-        log.info("parent tx end");
+    }
+
+    public void updateParentNoTx(Long id) {
+        User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
+
+        user.updateName("parent");
+        userServicePropagationRequiredChild.updateChild(id);
     }
 
 
