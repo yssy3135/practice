@@ -32,24 +32,21 @@ public class UserServicePropagationSupports {
     }
 
 
-    @Transactional()
+    @Transactional
     public void updateParent(Long id) {
-        log.info("call parent tx");
-        log.info("parent tx name = {}", TransactionSynchronizationManager.getCurrentTransactionName());
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
 
         user.updateName("parent");
         userServicePropagationRequiredChild.updateChild(id);
-        log.info("parent tx end");
+        userRepository.save(user);
     }
+
     public void updateParentNoTx(Long id) {
-        log.info("call parent no tx");
-        log.info("parent tx name = {}", TransactionSynchronizationManager.getCurrentTransactionName());
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
 
         user.updateName("parent");
         userServicePropagationRequiredChild.updateChild(id);
-        log.info("parent tx end");
+        userRepository.save(user);
     }
 
 

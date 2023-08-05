@@ -1,4 +1,4 @@
-package com.propagation.User.service.required;
+package com.propagation.User.service.never;
 
 import com.propagation.User.domain.User;
 import com.propagation.User.repository.UserRepository;
@@ -12,28 +12,23 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class UserServicePropagationRequiredChild {
+public class UserServicePropagationNeverChild {
 
     private final UserRepository userRepository;
-
-    public void saveUser() {
-        userRepository.save(
-                User.builder()
-                .name("save")
-                .build()
-        );
-    }
-
     public void deleteUser() {
         User user = userRepository.findById(1L).orElseThrow(RuntimeException::new);
         userRepository.delete(user);
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional(propagation = Propagation.NEVER)
     public void updateChild(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
         user.updateName("child");
-        userRepository.save(user);
+
+    }
+    public void updateChildNoTx(Long id) {
+        User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
+        user.updateName("child");
     }
 
 
