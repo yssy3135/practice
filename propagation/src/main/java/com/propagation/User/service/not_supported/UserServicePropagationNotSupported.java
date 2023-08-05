@@ -15,7 +15,7 @@ public class UserServicePropagationNotSupported {
 
     private final UserRepository userRepository;
 
-    private final UserServicePropagationNotSupportedChild userServicePropagationMandatoryChild;
+    private final UserServicePropagationNotSupportedChild userServicePropagationNotSupportedChild;
 
 
     public void saveUser() {
@@ -37,13 +37,15 @@ public class UserServicePropagationNotSupported {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
 
         user.updateName("parent");
-        userServicePropagationMandatoryChild.updateChild(id);
+        user.updateAge(1);
+        userRepository.save(user);
+        userServicePropagationNotSupportedChild.updateChild(id);
     }
     public void updateParentNoTx(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
 
         user.updateName("parent");
-        userServicePropagationMandatoryChild.updateChild(id);
+        userServicePropagationNotSupportedChild.updateChild(id);
     }
 
 

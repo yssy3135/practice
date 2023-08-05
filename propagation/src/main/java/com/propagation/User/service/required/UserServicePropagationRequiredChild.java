@@ -33,6 +33,7 @@ public class UserServicePropagationRequiredChild {
     public void updateChild(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
         user.updateName("child");
+        userRepository.save(user);
     }
 
 

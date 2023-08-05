@@ -1,20 +1,21 @@
-package com.propagation.User.service.request_new;
+package com.propagation.User.service.requires_new;
 
 import com.propagation.User.domain.User;
 import com.propagation.User.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 @RequiredArgsConstructor
 @Service
 @Slf4j
-public class UserServicePropagationRequestNewChild {
+public class UserServicePropagationRequiresNew {
 
     private final UserRepository userRepository;
+
+    private final UserServicePropagationRequiresNewChild userServicePropagationRequiresNewChild;
+
 
     public void saveUser() {
         userRepository.save(
@@ -29,19 +30,22 @@ public class UserServicePropagationRequestNewChild {
         userRepository.delete(user);
     }
 
-    @Transactional(propagation = Propagation.REQUIRES_NEW)
-    public void updateChild(Long id) {
+
+    @Transactional()
+    public void updateParent(Long id) {
 
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
-        user.updateName("child");
 
+        user.updateName("parent");
+        userServicePropagationRequiresNewChild.updateChild(id);
     }
-    public void updateChildNoTx(Long id) {
-
+    public void updateParentNoTx(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
-        user.updateName("child");
 
+        user.updateName("parent");
+        userServicePropagationRequiresNewChild.updateChild(id);
     }
+
 
 
 }

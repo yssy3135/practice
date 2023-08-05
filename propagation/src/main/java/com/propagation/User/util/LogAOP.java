@@ -12,7 +12,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 @Slf4j
 public class LogAOP {
     @Around("com.propagation.User.util.Pointcuts.userServiceAndUpdateMethod()")
-    public Object parentLogAspect(ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object logAspect(ProceedingJoinPoint joinPoint) throws Throwable {
 
         try{
             log.info("");

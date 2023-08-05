@@ -33,12 +33,13 @@ public class UserServicePropagationRequired {
     }
 
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional
     public void updateParent(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
 
         user.updateName("parent");
         userServicePropagationRequiredChild.updateChild(id);
+        userRepository.save(user);
     }
 
     public void updateParentNoTx(Long id) {

@@ -33,7 +33,17 @@ public class UserServicePropagationNotSupportedChild {
     public void updateChild(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
         user.updateName("child");
+        userRepository.save(user);
     }
+
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    public void updateChildThrowException(Long id) {
+        User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
+        user.updateName("child");
+        userRepository.save(user);
+        throw new RuntimeException();
+    }
+
     public void updateChildNoTx(Long id) {
         User user = userRepository.findById(id).orElseThrow(RuntimeException::new);
         user.updateName("child");
