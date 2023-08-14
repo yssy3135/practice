@@ -81,3 +81,116 @@ public class UserValidator implements ConstraintValidator<UserRegistrationConstr
 - userType이 manager라면 name과 phone의 값을 검증한 값을 return 해준다.
 - 여기서 globalExceptionHandler가 존재한다면  exception을 바로 던져도 무관할 것 같다.
 - initialize 메소드를 통해 validator를 초기화할 때 다른 작업을 할 수도 있지만 필요하지 않아 override하지 않았다
+# 검증
+
+```java
+@ExtendWith(SpringExtension.class)
+public class UserControllerTests {
+
+    private MockMvc mockMvc;
+
+    @InjectMocks
+    UserController userController;
+
+    private Gson gson;
+
+    @BeforeEach
+    public void before() {
+        MockitoAnnotations.initMocks(this);
+        createStandAloneMvc();
+
+    }
+
+    private void createStandAloneMvc(){
+
+        mockMvc = MockMvcBuilders
+                .standaloneSetup(userController)
+                .build();
+
+        gson = new GsonBuilder().create();
+
+    }
+
+    @Test
+    public void userRegistrationTest() throws Exception {
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(UserRequest.builder()
+                                .userType("manager")
+                                .username("ysys3131")
+                                .password("0000")
+                                .name("yoonsoo")
+                                .phone("01012340000")
+                        .build()))
+        ).andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("userType이 manager일때는 name이 null이면 실패")
+    public void userRegistrationFailWhenUserTypeManagerAndNameIsNull() throws Exception {
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(UserRequest.builder()
+                        .userType("manager")
+                        .username("ysys3131")
+                        .password("0000")
+                        .phone("01012340000")
+                        .build()))
+        ).andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("userType이 manager일때는 phone이 null이면 실패")
+    public void userRegistrationFailWhenUserTypeManagerAndPhoneIsNull() throws Exception {
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(UserRequest.builder()
+                        .userType("manager")
+                        .username("ysys3131")
+                        .password("0000")
+                        .name("yoonsoo")
+                        .build()))
+        ).andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("userType이 manager가 아닐때 phone은 null이어도 성공")
+    public void userRegistrationSuccessWhenUserTypeGeneralAndPhoneIsNull() throws Exception {
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(UserRequest.builder()
+                        .userType("general")
+                        .username("ysys3131")
+                        .password("0000")
+                        .name("yoonsoo")
+                        .build()))
+        ).andExpect(status().isCreated());
+    }
+
+    @Test
+    @DisplayName("userType이 manager가 아닐때 name은 null이어도 성공")
+    public void userRegistrationSuccessWhenUserTypeGeneralAndNameIsNull() throws Exception {
+
+        mockMvc.perform(post("/user")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(gson.toJson(UserRequest.builder()
+                        .userType("general")
+                        .username("ysys3131")
+                        .password("0000")
+                        .phone("01012340000")
+                        .build()))
+        ).andExpect(status().isCreated());
+    }
+
+}
+```
+
+위아 같이 테스트 코드를 작성하고 모두 성공하는 모습을 확인할 수 있다.
+
+- 검증시에 다른 방면으로도 유용하게 사용할 수 있을 것 같다.
+- 다른 로직과 섞이지 않고 검증만 해주고 다른 곳에서 신경쓰지 않아도 되니 효과적이라고 생각된다.
+- 관심사가 잘 분리되었다고 생각된다.
