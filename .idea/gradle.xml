@@ -4,9 +4,18 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/transaction-isolation" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] custom-validator Readme보완">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/custom-validator.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/dto/UserRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/dto/UserResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/custom-validator">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/propagation">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/transaction-isolation">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/../propagation-isolation">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/propagation">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/custom-validator">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/../propagation-isolation">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/custom-validator" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="ec1012ee-3825-45ec-9609-95a68b68e6f9" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2TWXlV5VTdu9FcmnyWtxSOffmao" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "/Users/iyunsu/IdeaProjects/practice/transaction-isolation/src/main/java/com/example/transactionisolation/User",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "34a8ff49916c7d395442bbf13c664b98",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.transactionisolation.User.service" />
+      <recent name="com.example.customvalidator.user.controller" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User" />
+      <recent name="$PROJECT_DIR$/propagation/src/main/java/com/propagation/User/service/nested" />
+      <recent name="$PROJECT_DIR$/propagation/src/main/java/com/propagation/User/service/request_new" />
+      <recent name="$PROJECT_DIR$/propagation/src/main/java/com/propagation/User/service/not_supported" />
+      <recent name="$PROJECT_DIR$/propagation/src/main/java/com/propagation/User/service/madatory" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/propagation/images" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.propagation.User.service.never" />
+      <recent name="com.propagation.User.service.supports" />
+      <recent name="com.propagation.User.service" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.UserServiceTest.transaction_read_uncommitted">
+    <configuration name="UserControllerTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/custom-validator" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.customvalidator.user.api.UserControllerTests&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserControllerTests.userRegistrationSuccessWhenUserTypeGeneralAndNameIsNull" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/custom-validator" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.customvalidator.user.api.UserControllerTests.userRegistrationSuccessWhenUserTypeGeneralAndNameIsNull&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="UserServiceTest.transaction_read_uncommitted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.transactionisolation.service.UserServiceTest.transaction_read_uncommitted&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="propagation-isolation [init]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../propagation-isolation" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="init" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="propagation-isolation [wrapper]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/../propagation-isolation" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="wrapper" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CustomValidatorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="custom-validator.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.customvalidator.CustomValidatorApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PropagationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="propagation.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.propagation.PropagationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PropagationIsolationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="propagation-isolation.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.propagationisolation.PropagationIsolationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionIsolationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="transaction-isolation.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.transactionisolation.TransactionIsolationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.UserServiceTest.transaction_read_uncommitted" />
+        <item itemvalue="Gradle.propagation-isolation [wrapper]" />
+        <item itemvalue="Gradle.propagation-isolation [init]" />
+        <item itemvalue="Gradle.UserControllerTests" />
+        <item itemvalue="Gradle.UserControllerTests.userRegistrationSuccessWhenUserTypeGeneralAndNameIsNull" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="" />
+      <created>1691159963882</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1691159963882</updated>
+      <workItem from="1691159964904" duration="18336000" />
+      <workItem from="1692016938523" duration="7651000" />
+      <workItem from="1692584242108" duration="9663000" />
+    </task>
+    <task id="LOCAL-00001" summary="[ADD] transaction propagation 예제코드 작성 및 log 통해 결과확인,&#10;log 출력용 aop 코드 작성">
+      <created>1691221133435</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1691221133435</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[ADD] transaction propagation 예제코드 변경 및 추가">
+      <created>1691229456248</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1691229456248</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[ADD] README 추가">
+      <created>1691230435019</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1691230435019</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[ADD] README 수정">
+      <created>1691230512677</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1691230512677</updated>
+    </task>
+    <task id="LOCAL-00005" summary="[ADD] custom-validator 모듈 세팅">
+      <created>1692024076932</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692024076932</updated>
+    </task>
+    <task id="LOCAL-00006" summary="[ADD] custom-validator 예제 및 테스트 추가">
+      <created>1692026482400</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692026482400</updated>
+    </task>
+    <task id="LOCAL-00007" summary="[ADD] custom-validator Readme추가">
+      <created>1692026913619</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692026913619</updated>
+    </task>
+    <task id="LOCAL-00008" summary="[ADD] custom-validator Readme보완">
+      <created>1692027426463</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1692027426463</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[ADD] transaction propagation 예제코드 작성 및 log 통해 결과확인,&#10;log 출력용 aop 코드 작성" />
+    <MESSAGE value="[ADD] transaction propagation 예제코드 변경 및 추가" />
+    <MESSAGE value="[ADD] README 추가" />
+    <MESSAGE value="[ADD] README 수정" />
+    <MESSAGE value="[ADD] custom-validator 모듈 세팅" />
+    <MESSAGE value="[ADD] custom-validator 예제 및 테스트 추가" />
+    <MESSAGE value="[ADD] custom-validator Readme추가" />
+    <MESSAGE value="[ADD] custom-validator Readme보완" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] custom-validator Readme보완" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/transaction-isolation/build.gradle</url>
+          <line>7</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
