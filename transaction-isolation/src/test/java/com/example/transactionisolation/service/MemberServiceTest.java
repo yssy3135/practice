@@ -53,15 +53,13 @@ public class MemberServiceTest {
 
         executorService.submit(() -> {
             try {
-                Thread.sleep(1000);
+                sleep(1000);
                 Member foundMember = memberService.findUserBy(savedMember.getId());
                 log.info("found member : {}", foundMember.toString());
 
                 assertEquals("temp", foundMember.getName());
             } catch (RuntimeException e) {
                 log.info("not found: {}", e.toString());
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
             } finally {
                 latch.countDown();
             }
@@ -85,11 +83,7 @@ public class MemberServiceTest {
         });
 
         CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            sleep(500);
             Member foundMember = memberService.findUserBy(savedMember.getId());
             log.info("found member : {}", foundMember.toString());
             return foundMember;
@@ -118,11 +112,7 @@ public class MemberServiceTest {
         });
 
         CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            sleep(500);
             Member foundMember = memberService.findUserById_read_committed(savedMember.getId());
             log.info("found member : {}", foundMember.toString());
             return foundMember;
@@ -151,11 +141,7 @@ public class MemberServiceTest {
         });
 
         CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            sleep(500);
             Member foundMember = null;
             try {
                 foundMember = memberService.findUserByName_read_committed("updated");
@@ -205,6 +191,14 @@ public class MemberServiceTest {
 
         CompletableFuture.allOf(changeName,foundMemberResult);
 
+    }
+
+    public void sleep(int millis)  {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
