@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -71,5 +73,19 @@ public class MemberService {
 
         return afterSleepFoundUser.get();
     }
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public List<Member> findUserById_phantomRead(Long id) throws InterruptedException {
+        ArrayList<Member> memberList = new ArrayList<>();
+        memberList.add(memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user")));
+
+        Thread.sleep(1500);
+
+        memberList.add(memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user")));
+
+        return memberList;
+    }
+
+
 
 }

@@ -10,9 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
 import java.util.concurrent.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @SpringBootTest
 @Slf4j
@@ -69,7 +71,7 @@ public class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("여러 스레드가 동시 호출시Dirty Read 발생")
+    @DisplayName("여러 스레드가 동시 호출시Dirty Read, Non-Repeatable Read, Phantom Read 현상이 모두 발생한다")
     public void transaction_read_uncommitted_completableFuture() throws InterruptedException, ExecutionException {
 
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
@@ -135,7 +137,7 @@ public class MemberServiceTest {
 
 
     @Test
-    @DisplayName(" Non-Repeatable Read는 한 트랜잭션 내에서 반복 읽기를 수행하면 다른 트랜잭션의 커밋 여부에 따라 조회 결과가 달라지는 문제 발생")
+    @DisplayName("Non-Repeatable Read 한 트랜잭션 내에서 반복 읽기를 수행하면 다른 트랜잭션의 커밋 여부에 따라 조회 결과가 달라지는 문제 발생")
     public void transaction_read_committed_completableFuture() throws InterruptedException, ExecutionException {
 
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
@@ -166,6 +168,40 @@ public class MemberServiceTest {
         });
 
         assertEquals("updated", foundMemberResult.get().getName());
+
+        CompletableFuture.allOf(changeName,foundMemberResult);
+
+    }
+
+    @Test
+    @DisplayName("Phantom Read 한 트랜잭션에서 같은 조건으로 조회했을때 이전과 결과는 같지만 내부 데이터가 달라짐.")
+    public void transaction_read_committed_phantom_read() throws InterruptedException, ExecutionException {
+
+        Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
+
+        CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
+            try {
+                memberService.updateDelay1sec(savedMember.getId(), "updated");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        CompletableFuture<List<Member>> foundMemberResult = CompletableFuture.supplyAsync(() -> {
+
+            List<Member> members = null;
+            try {
+                members = memberService.findUserById_phantomRead(savedMember.getId());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            return members;
+        });
+
+        log.info("members {}", foundMemberResult.get());
+        assertNotEquals(foundMemberResult.get().get(0).getName(),foundMemberResult.get().get(1).getName());
+
 
         CompletableFuture.allOf(changeName,foundMemberResult);
 

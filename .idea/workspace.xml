@@ -4,20 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] custom-validator Readme보완">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/custom-validator.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/dto/UserRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/dto/UserResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/UserServiceTest.java" afterDir="false" />
+    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] isolation 진행중..">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,10 +80,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2TWXlV5VTdu9FcmnyWtxSOffmao" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -104,7 +100,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "android.gradle.sync.needed": "true",
+    "git-widget-placeholder": "feature/transaction-isolation",
     "jdk.selected.JAVA_MODULE": "11",
     "last_opened_file_path": "/Users/iyunsu/IdeaProjects/practice/transaction-isolation/src/main/java/com/example/transactionisolation/User",
     "node.js.detected.package.eslint": "true",
@@ -116,7 +113,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "spring.configuration.checksum": "34a8ff49916c7d395442bbf13c664b98",
+    "spring.configuration.checksum": "0c4f8dac5fb910b3f78474c1b27b8561",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -308,6 +305,7 @@
       <workItem from="1691159964904" duration="18336000" />
       <workItem from="1692016938523" duration="7651000" />
       <workItem from="1692584242108" duration="9663000" />
+      <workItem from="1692839799892" duration="8000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] transaction propagation 예제코드 작성 및 log 통해 결과확인,&#10;log 출력용 aop 코드 작성">
       <created>1691221133435</created>
@@ -380,7 +378,8 @@
     <MESSAGE value="[ADD] custom-validator 예제 및 테스트 추가" />
     <MESSAGE value="[ADD] custom-validator Readme추가" />
     <MESSAGE value="[ADD] custom-validator Readme보완" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] custom-validator Readme보완" />
+    <MESSAGE value="[ADD] isolation 진행중.." />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] isolation 진행중.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

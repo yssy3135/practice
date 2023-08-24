@@ -16,7 +16,7 @@ public class UserServicePropagationRequiredTest {
 
     @Autowired
     UserServicePropagationSupports userServicePropagationSupports;
-
+[]
 
     @BeforeEach
     public void saveUser() {
