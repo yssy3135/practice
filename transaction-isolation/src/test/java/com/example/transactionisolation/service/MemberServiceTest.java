@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -20,7 +21,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 @Slf4j
 public class MemberServiceTest {
 
-
     @Autowired
     MemberService memberService;
 
@@ -30,7 +30,6 @@ public class MemberServiceTest {
 
     }
 
-
     @Test
     public void transaction_read_uncommitted() throws InterruptedException {
 
@@ -39,7 +38,6 @@ public class MemberServiceTest {
         CountDownLatch latch = new CountDownLatch(threadCount);
 
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
-
 
         executorService.submit(() -> {
             try {
@@ -69,7 +67,7 @@ public class MemberServiceTest {
     }
 
     @Test
-    @DisplayName("여러 스레드가 동시 호출시Dirty Read, Non-Repeatable Read, Phantom Read 현상이 모두 발생한다")
+    @DisplayName("여러 스레드가 동시 호출시Dirty Read, Non-Repeatable Read, Phantom Read 현상이 모두 발생")
     public void transaction_read_uncommitted_completableFuture() throws InterruptedException, ExecutionException {
 
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
@@ -141,43 +139,35 @@ public class MemberServiceTest {
         });
 
         CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
-            sleep(500);
-            Member foundMember = null;
+            Member member= null;
             try {
-                foundMember = memberService.findUserByName_read_committed("updated");
+                member = memberService.findUserByIdTwiceStopOnceInTheMiddleReturnResults("updated");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            log.info("found member : {}", foundMember.toString());
-            return foundMember;
+            return member;
 
         });
-
-        assertEquals("updated", foundMemberResult.get().getName());
-
         CompletableFuture.allOf(changeName,foundMemberResult);
+
+        log.info("members {}", foundMemberResult.get());
+        assertEquals("updated", foundMemberResult.get().getName());
 
     }
 
+
+    //Phantom Read 한 트랜잭션에서 여러번 조회할 경우 중간에 다른 트랜잭션에 의해 추가된 레코드가 발견될 수 있다.
     @Test
-    @DisplayName("Phantom Read 한 트랜잭션에서 같은 조건으로 조회했을때 이전과 결과는 같지만 내부 데이터가 달라짐.")
-    public void transaction_read_committed_phantom_read() throws InterruptedException, ExecutionException {
+    @DisplayName("REPEATABLE_READ 팬텀리드 발생 안함. mysql은 거의 발생 안함 gap Lock 때문")
+    public void transaction_read_committed_not_phantom_read() throws InterruptedException, ExecutionException {
 
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
 
-        CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
-            try {
-                memberService.updateDelay1sec(savedMember.getId(), "updated");
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
         CompletableFuture<List<Member>> foundMemberResult = CompletableFuture.supplyAsync(() -> {
-
             List<Member> members = null;
             try {
-                members = memberService.findUserById_phantomRead(savedMember.getId());
+                // 처음 조회후 3초간 sleep 후 다시 조회
+                members = memberService.findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResult(savedMember.getId());
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -185,13 +175,62 @@ public class MemberServiceTest {
             return members;
         });
 
-        log.info("members {}", foundMemberResult.get());
-        assertNotEquals(foundMemberResult.get().get(0).getName(),foundMemberResult.get().get(1).getName());
-
-
+        CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
+            try {
+                // 중간에 레코드 추가
+                memberService.saveMemberDelay(MemberRequest.builder().name("newMem").build());
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
         CompletableFuture.allOf(changeName,foundMemberResult);
 
+        log.info("updatedMembers {}", changeName.get());
+        log.info("members {}", foundMemberResult.get());
+
+        assertEquals(1, foundMemberResult.get().size());
     }
+
+
+    @Test
+    @DisplayName("REPEATABLE_READ 팬텀리드 발생")
+    public void transaction_read_committed_phantom_read() throws InterruptedException, ExecutionException {
+
+        Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
+
+        CompletableFuture<List<Member>> foundMemberResult = CompletableFuture.supplyAsync(() -> {
+            List<Member> members = null;
+            try {
+                // 처음 조회후 3초간 sleep 후 다시 조회
+                members = memberService.findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLock(savedMember.getId());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            return members;
+        });
+
+        CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
+            try {
+                // 중간에 레코드 추가
+                memberService.saveMemberDelay(MemberRequest.builder().name("newMem").build());
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        CompletableFuture.allOf(changeName,foundMemberResult);
+
+        log.info("members {}", foundMemberResult.get());
+
+        assertEquals(2, foundMemberResult.get().size());
+    }
+
+
+
+
+
 
     public void sleep(int millis)  {
         try {

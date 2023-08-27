@@ -3,7 +3,6 @@ package com.example.transactionisolation.User.service;
 import com.example.transactionisolation.User.domain.Member;
 import com.example.transactionisolation.User.repository.MemberRepository;
 import com.example.transactionisolation.User.service.dto.MemberRequest;
-import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,10 +21,6 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
 
-    private final EntityManager entityManager;
-
-
-
     public Member saveMember(MemberRequest memberRequest)  {
         Member memberRequestEntity = memberRequest.toEntity();
         return memberRepository.save(memberRequestEntity);
@@ -34,10 +29,9 @@ public class MemberService {
     @Transactional
     public Member updateDelay1sec(Long id, String name) throws InterruptedException {
         Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
-        member.updateName("temp");
-        memberRepository.flush();
-
-        Thread.sleep(1000);
+//        member.updateName("temp");
+//        memberRepository.flush();
+        Thread.sleep(500);
 
         member.updateName(name);
         memberRepository.flush();
@@ -58,9 +52,25 @@ public class MemberService {
 
     }
 
+
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public Member findUserByName_read_committed(String name) throws InterruptedException {
-        Optional<Member> foundMember = memberRepository.findMemberByName(name);
+    public Member findUserByIdTwiceStopOnceInTheMiddleReturnResults(String name) throws InterruptedException {
+        ArrayList<Member> memberList  = new ArrayList<>();
+
+        memberRepository.findMemberByName("updated");
+
+        Thread.sleep(3000);
+
+        return memberRepository.findMemberByName("updated").orElseThrow(() -> new RuntimeException("Not found user"));
+
+    }
+
+
+
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public Member findUserByName_read_committed(Long id) throws InterruptedException {
+        Optional<Member> foundMember = memberRepository.findById(id);
 
         if(foundMember.isPresent()){
             log.info("foundMember {}", foundMember);
@@ -68,24 +78,51 @@ public class MemberService {
 
         Thread.sleep(1000);
 
-        Optional<Member> afterSleepFoundUser = memberRepository.findMemberByName(name);
+        Optional<Member> afterSleepFoundUser = memberRepository.findById(id);
         log.info("afterSleepFoundUser {}", afterSleepFoundUser);
 
         return afterSleepFoundUser.get();
     }
 
-    @Transactional(isolation = Isolation.READ_COMMITTED)
-    public List<Member> findUserById_phantomRead(Long id) throws InterruptedException {
+    /**
+     * 일반적 MySQL의 REPEATABLE_READ 에서는 PhantomRead는 발생하지 않음 -> Gap Lock 에 의해
+     * SELECT FOR UPDATE로 조회를 했다면, 언두 로그가 아닌 테이블로부터 레코드를 조회하므로 Phantom Read가 발생한다.
+     */
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResult(Long id) throws InterruptedException {
         ArrayList<Member> memberList = new ArrayList<>();
-        memberList.add(memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user")));
+        // 1. 조회
+        memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));
 
-        Thread.sleep(1500);
+        Thread.sleep(3000);
 
-        memberList.add(memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user")));
-
-        return memberList;
+        // 3. 베타적 잠금을 건후 조회. ( SELECT … FOR UPDATE 구문 )
+        return memberRepository.findMembersByIdAfterForUpdate(id);
     }
 
+
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLock(Long id) throws InterruptedException {
+        ArrayList<Member> memberList = new ArrayList<>();
+        // 1. 조회
+        memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));
+
+        Thread.sleep(3000);
+
+        // 3. 베타적 잠금을 건후 조회. ( SELECT … FOR UPDATE 구문 )
+        return memberRepository.findMembersByIdAfterForUpdateUsingLock(id);
+    }
+
+
+
+
+
+    public Member saveMemberDelay(MemberRequest memberRequest) throws InterruptedException {
+        Thread.sleep(3000);
+        Member memberRequestEntity = memberRequest.toEntity();
+        //2. 새로운 member 저장 후 commit
+        return memberRepository.saveAndFlush(memberRequestEntity);
+    }
 
 
 }
