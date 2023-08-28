@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -31,39 +30,26 @@ public class MemberServiceTest {
     }
 
     @Test
-    public void transaction_read_uncommitted() throws InterruptedException {
-
-        int threadCount = 2;
-        ExecutorService executorService = Executors.newFixedThreadPool(32);
-        CountDownLatch latch = new CountDownLatch(threadCount);
-
+    public void transaction_read_uncommitted() throws InterruptedException, ExecutionException {
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
 
-        executorService.submit(() -> {
+        CompletableFuture<Void> updated = CompletableFuture.runAsync(() -> {
             try {
-                memberService.updateDelay1sec(savedMember.getId(),"updated");
+                memberService.updateMember(savedMember.getId(), "updated");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
-            } finally {
-                latch.countDown();
             }
         });
 
-        executorService.submit(() -> {
-            try {
-                sleep(1000);
-                Member foundMember = memberService.findUserBy(savedMember.getId());
-                log.info("found member : {}", foundMember.toString());
-
-                assertEquals("temp", foundMember.getName());
-            } catch (RuntimeException e) {
-                log.info("not found: {}", e.toString());
-            } finally {
-                latch.countDown();
-            }
+        CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
+            sleep(500);
+            return memberService.findUserBy(savedMember.getId());
         });
 
-        latch.await();
+        CompletableFuture.allOf(updated,foundMemberResult).join();
+
+        assertEquals("updated", foundMemberResult.get().getName());
+
     }
 
     @Test
@@ -74,7 +60,7 @@ public class MemberServiceTest {
 
         CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
             try {
-                memberService.updateDelay1sec(savedMember.getId(), "updated");
+                memberService.updateMember(savedMember.getId(), "updated");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -103,7 +89,7 @@ public class MemberServiceTest {
 
         CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
             try {
-                memberService.updateDelay1sec(savedMember.getId(), "updated");
+                memberService.updateMember(savedMember.getId(), "updated");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -132,7 +118,7 @@ public class MemberServiceTest {
 
         CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
             try {
-                memberService.updateDelay1sec(savedMember.getId(), "updated");
+                memberService.updateMember(savedMember.getId(), "updated");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -194,7 +180,7 @@ public class MemberServiceTest {
 
 
     @Test
-    @DisplayName("REPEATABLE_READ 팬텀리드 발생")
+    @DisplayName("REPEATABLE_READ SELECT FOR UPDATE 조회 팬텀리드 발생")
     public void transaction_read_committed_phantom_read() throws InterruptedException, ExecutionException {
 
         Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
@@ -225,6 +211,42 @@ public class MemberServiceTest {
         log.info("members {}", foundMemberResult.get());
 
         assertEquals(2, foundMemberResult.get().size());
+    }
+
+
+    @Test
+    @DisplayName("serializable 아무런 문제 발생하지 않음")
+    public void transaction_serializable() throws InterruptedException, ExecutionException {
+
+        Member savedMember = memberService.saveMember(MemberRequest.builder().name("before").build());
+
+        CompletableFuture<List<Member>> foundMemberResult = CompletableFuture.supplyAsync(() -> {
+            List<Member> members = null;
+            try {
+                // 처음 조회후 3초간 sleep 후 다시 조회
+                members = memberService.findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLockSerializable(savedMember.getId());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            return members;
+        });
+
+        CompletableFuture<Void> changeName = CompletableFuture.runAsync(() -> {
+            try {
+                // 중간에 레코드 추가
+                memberService.saveMemberDelay(MemberRequest.builder().name("newMem").build());
+            }
+            catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        CompletableFuture.allOf(changeName,foundMemberResult);
+
+        log.info("members {}", foundMemberResult.get());
+
+        assertEquals(1, foundMemberResult.get().size());
+        assertEquals("before", foundMemberResult.get().get(0).getName());
     }
 
 

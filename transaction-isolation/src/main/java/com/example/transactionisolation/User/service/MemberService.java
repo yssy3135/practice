@@ -27,23 +27,27 @@ public class MemberService {
     }
 
     @Transactional
-    public Member updateDelay1sec(Long id, String name) throws InterruptedException {
+    public Member updateMember(Long id, String name) throws InterruptedException {
         Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
-//        member.updateName("temp");
-//        memberRepository.flush();
-        Thread.sleep(500);
 
         member.updateName(name);
         memberRepository.flush();
+        Thread.sleep(3000);
 
+        log.info("*****update Member close*****");
         return memberRepository.save(member);
     }
 
 
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
     public Member findUserBy(Long id)  {
-        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
+        Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
+        log.info("*****found Member : {}*****", member);
+        return member;
     }
+
+
+
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public Member findUserById_read_committed(Long id) {
@@ -103,6 +107,19 @@ public class MemberService {
 
     @Transactional(isolation = Isolation.REPEATABLE_READ)
     public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLock(Long id) throws InterruptedException {
+        ArrayList<Member> memberList = new ArrayList<>();
+        // 1. 조회
+        memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));
+
+        Thread.sleep(3000);
+
+        // 3. 베타적 잠금을 건후 조회. ( SELECT … FOR UPDATE 구문 )
+        return memberRepository.findMembersByIdAfterForUpdateUsingLock(id);
+    }
+
+
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLockSerializable(Long id) throws InterruptedException {
         ArrayList<Member> memberList = new ArrayList<>();
         // 1. 조회
         memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));

@@ -4,17 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] isolation 진행중..">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" beforeDir="false" />
+    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] isolation 팬텀리드 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -372,7 +363,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692027426463</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[ADD] isolation 팬텀리드 추가">
+      <option name="closed" value="true" />
+      <created>1693150411891</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1693150411891</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +388,8 @@
     <MESSAGE value="[ADD] custom-validator Readme보완" />
     <MESSAGE value="[ADD] isolation 진행중.." />
     <MESSAGE value="[MOD] 임시저장" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MOD] 임시저장" />
+    <MESSAGE value="[ADD] isolation 팬텀리드 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] isolation 팬텀리드 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -401,7 +401,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>100</line>
+          <line>99</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
