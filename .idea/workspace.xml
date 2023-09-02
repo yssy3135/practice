@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[MOD] isolation 테스트 코드 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_08_21_11_22_AM__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/Member.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] isolation 테스트 코드 작성 완료" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +94,6 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature/transaction-isolation",
     "jdk.selected.JAVA_MODULE": "11",
@@ -315,7 +306,7 @@
       <workItem from="1692839799892" duration="8000" />
       <workItem from="1693227833418" duration="7478000" />
       <workItem from="1693314354090" duration="17884000" />
-      <workItem from="1693637005436" duration="9179000" />
+      <workItem from="1693637005436" duration="9514000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] transaction propagation 예제코드 작성 및 log 통해 결과확인,&#10;log 출력용 aop 코드 작성">
       <created>1691221133435</created>
@@ -389,7 +380,23 @@
       <option name="project" value="LOCAL" />
       <updated>1693234219588</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="[ADD] isolation 테스트 코드 작성 완료">
+      <option name="closed" value="true" />
+      <created>1693648459430</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693648459430</updated>
+    </task>
+    <task id="LOCAL-00012" summary="[ADD] isolation 테스트 코드 작성 완료">
+      <option name="closed" value="true" />
+      <created>1693648569061</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693648569061</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -408,7 +415,8 @@
     <MESSAGE value="[MOD] 임시저장" />
     <MESSAGE value="[ADD] isolation 팬텀리드 추가" />
     <MESSAGE value="[MOD] isolation 테스트 코드 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MOD] isolation 테스트 코드 수정" />
+    <MESSAGE value="[ADD] isolation 테스트 코드 작성 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] isolation 테스트 코드 작성 완료" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
