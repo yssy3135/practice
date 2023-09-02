@@ -4,8 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[ADD] isolation 팬텀리드 추가">
+    <list default="true" id="d8265777-a192-4ac3-9b18-80d7b5adf227" name="Changes" comment="[MOD] isolation 테스트 코드 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023_08_21_11_22_AM__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,33 +94,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;android.gradle.sync.needed&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/transaction-isolation&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/iyunsu/IdeaProjects/practice/transaction-isolation/src/main/java/com/example/transactionisolation/User&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;0c4f8dac5fb910b3f78474c1b27b8561&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/transaction-isolation",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "/Users/iyunsu/IdeaProjects/practice/transaction-isolation/src/main/java/com/example/transactionisolation/User",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
+    "spring.configuration.checksum": "91c6283fbbf63406509d562eab8d9a9f",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.transactionisolation.User.service" />
@@ -137,8 +142,8 @@
       <recent name="com.propagation.User.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.MemberServiceTest.transaction_read_committed_completableFuture">
-    <configuration name="MemberServiceTest.transaction_read_committed_completableFuture" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.MemberServiceTest.shouldNotPhantomReadWhenIsolationLevelRepeatableReadSelectForUpdateAfterSelect">
+    <configuration name="MemberServiceTest.REPEATABLE_READ_SELECT_AFTER_SELECT_팬텀리드X" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
@@ -151,7 +156,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.transaction_read_committed_completableFuture&quot;" />
+            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.REPEATABLE_READ_SELECT_AFTER_SELECT_팬텀리드X&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -162,7 +167,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MemberServiceTest.transaction_read_committed_not_dirty_read" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MemberServiceTest.REPEATABLE_READ_SELECT_FOR_UPDATE_AFTER_SELECT_FOR_UPDATE_팬텀리드X" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
@@ -175,7 +180,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.transaction_read_committed_not_dirty_read&quot;" />
+            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.REPEATABLE_READ_SELECT_FOR_UPDATE_AFTER_SELECT_FOR_UPDATE_팬텀리드X&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -186,7 +191,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="MemberServiceTest.transaction_read_committed_phantom_read" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MemberServiceTest.shouldDirtyReadAndPhantomReadWhenIsolationLevelReadUncommitted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
@@ -199,7 +204,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.transaction_read_committed_phantom_read&quot;" />
+            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.shouldDirtyReadAndPhantomReadWhenIsolationLevelReadUncommitted&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -210,7 +215,7 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UserServiceTest.transaction_read_uncommitted" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MemberServiceTest.shouldNotPhantomReadWhenIsolationLevelRepeatableReadSelectForUpdateAfterSelect" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
@@ -223,7 +228,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.example.transactionisolation.service.UserServiceTest.transaction_read_uncommitted&quot;" />
+            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.shouldNotPhantomReadWhenIsolationLevelRepeatableReadSelectForUpdateAfterSelect&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -234,26 +239,28 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="transaction-isolation [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="MemberServiceTest.transaction_serializable" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-isolation" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.transactionisolation.service.MemberServiceTest.transaction_serializable&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
+      <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
     <configuration name="CustomValidatorApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
@@ -286,11 +293,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.MemberServiceTest.transaction_read_committed_completableFuture" />
-        <item itemvalue="Gradle.MemberServiceTest.transaction_read_committed_not_dirty_read" />
-        <item itemvalue="Gradle.MemberServiceTest.transaction_read_committed_phantom_read" />
-        <item itemvalue="Gradle.transaction-isolation [clean]" />
-        <item itemvalue="Gradle.UserServiceTest.transaction_read_uncommitted" />
+        <item itemvalue="Gradle.MemberServiceTest.shouldNotPhantomReadWhenIsolationLevelRepeatableReadSelectForUpdateAfterSelect" />
+        <item itemvalue="Gradle.MemberServiceTest.shouldDirtyReadAndPhantomReadWhenIsolationLevelReadUncommitted" />
+        <item itemvalue="Gradle.MemberServiceTest.transaction_serializable" />
+        <item itemvalue="Gradle.MemberServiceTest.REPEATABLE_READ_SELECT_AFTER_SELECT_팬텀리드X" />
+        <item itemvalue="Gradle.MemberServiceTest.REPEATABLE_READ_SELECT_FOR_UPDATE_AFTER_SELECT_FOR_UPDATE_팬텀리드X" />
       </list>
     </recent_temporary>
   </component>
@@ -306,6 +313,9 @@
       <workItem from="1692016938523" duration="7651000" />
       <workItem from="1692584242108" duration="9663000" />
       <workItem from="1692839799892" duration="8000" />
+      <workItem from="1693227833418" duration="7478000" />
+      <workItem from="1693314354090" duration="17884000" />
+      <workItem from="1693637005436" duration="9179000" />
     </task>
     <task id="LOCAL-00001" summary="[ADD] transaction propagation 예제코드 작성 및 log 통해 결과확인,&#10;log 출력용 aop 코드 작성">
       <created>1691221133435</created>
@@ -371,7 +381,15 @@
       <option name="project" value="LOCAL" />
       <updated>1693150411891</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[MOD] isolation 테스트 코드 수정">
+      <option name="closed" value="true" />
+      <created>1693234219588</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693234219588</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +407,8 @@
     <MESSAGE value="[ADD] isolation 진행중.." />
     <MESSAGE value="[MOD] 임시저장" />
     <MESSAGE value="[ADD] isolation 팬텀리드 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ADD] isolation 팬텀리드 추가" />
+    <MESSAGE value="[MOD] isolation 테스트 코드 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[MOD] isolation 테스트 코드 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -401,52 +420,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>99</line>
+          <line>122</line>
           <properties>
             <option name="lambda-ordinal" value="-1" />
           </properties>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>59</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>63</line>
-          <properties>
-            <option name="lambda-ordinal" value="-1" />
-          </properties>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>36</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>64</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

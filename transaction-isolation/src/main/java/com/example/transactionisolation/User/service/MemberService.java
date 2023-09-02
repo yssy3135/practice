@@ -3,13 +3,13 @@ package com.example.transactionisolation.User.service;
 import com.example.transactionisolation.User.domain.Member;
 import com.example.transactionisolation.User.repository.MemberRepository;
 import com.example.transactionisolation.User.service.dto.MemberRequest;
+import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,27 +20,34 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    private final EntityManager em;
 
-    public Member saveMember(MemberRequest memberRequest)  {
-        Member memberRequestEntity = memberRequest.toEntity();
-        return memberRepository.save(memberRequestEntity);
-    }
 
     @Transactional
-    public Member updateMember(Long id, String name) throws InterruptedException {
+    public Member updateMember(Long id, String name) {
         Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
 
         member.updateName(name);
         memberRepository.flush();
-        Thread.sleep(3000);
+        sleep(3000);
 
         log.info("*****update Member close*****");
         return memberRepository.save(member);
     }
 
 
+    @Transactional
+    public Member immediateUpdateMember(Long id, String name) {
+        Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
+        member.updateName(name);
+
+        log.info("*****update Member close*****");
+        return memberRepository.saveAndFlush(member);
+    }
+
+
     @Transactional(isolation = Isolation.READ_UNCOMMITTED)
-    public Member findUserBy(Long id)  {
+    public Member findMemberBy(Long id)  {
         Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
         log.info("*****found Member : {}*****", member);
         return member;
@@ -50,37 +57,50 @@ public class MemberService {
 
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public Member findUserById_read_committed(Long id) {
-
-        return memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
-
-    }
-
-
-    @Transactional(isolation = Isolation.READ_COMMITTED)
-    public Member findUserByIdTwiceStopOnceInTheMiddleReturnResults(String name) throws InterruptedException {
-        ArrayList<Member> memberList  = new ArrayList<>();
-
-        memberRepository.findMemberByName("updated");
-
-        Thread.sleep(3000);
-
-        return memberRepository.findMemberByName("updated").orElseThrow(() -> new RuntimeException("Not found user"));
-
+    public Member findMemberById_read_committed(Long id) {
+        Member member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Not found user"));
+        log.info("*****found Member : {}*****", member);
+        return member;
     }
 
 
 
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public Member findMemberRepeatable(String name) {
+
+        return repeatableFind(name);
+
+    }
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public Member findUserByName_read_committed(Long id) throws InterruptedException {
+    public Member findUserByIdTwiceStopOnceInTheMiddleReturnResults(String name)  {
+
+        return repeatableFind(name);
+
+    }
+
+    private Member repeatableFind(String name) {
+        Optional<Member> member = memberRepository.findMemberByName(name);
+
+        log.info("*****첫번쨰 Member : {}*****", member);
+
+        sleep(3000);
+
+        Optional<Member> secondMember = memberRepository.findMemberByName(name);
+        log.info("*****두번쨰 Member : {}*****", secondMember);
+        return secondMember.orElse(null);
+    }
+
+
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public Member findUserByName_read_committed(Long id) {
         Optional<Member> foundMember = memberRepository.findById(id);
 
         if(foundMember.isPresent()){
             log.info("foundMember {}", foundMember);
         }
 
-        Thread.sleep(1000);
+        sleep(1000);
 
         Optional<Member> afterSleepFoundUser = memberRepository.findById(id);
         log.info("afterSleepFoundUser {}", afterSleepFoundUser);
@@ -93,53 +113,78 @@ public class MemberService {
      * SELECT FOR UPDATE로 조회를 했다면, 언두 로그가 아닌 테이블로부터 레코드를 조회하므로 Phantom Read가 발생한다.
      */
     @Transactional(isolation = Isolation.REPEATABLE_READ)
-    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResult(Long id) throws InterruptedException {
-        ArrayList<Member> memberList = new ArrayList<>();
-        // 1. 조회
-        memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));
+    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResult(Long id) {
+        List<Member> members = memberRepository.findMembersByIdAfter(id);
+        log.info("*****첫번째 Members : {}*****", members);
+        sleep(3000);
 
-        Thread.sleep(3000);
-
-        // 3. 베타적 잠금을 건후 조회. ( SELECT … FOR UPDATE 구문 )
-        return memberRepository.findMembersByIdAfterForUpdate(id);
+        List<Member> secondMembers = memberRepository.findMembersByIdAfter(id);
+        log.info("*****두번째 Members : {}*****", secondMembers);
+        return secondMembers;
     }
 
 
     @Transactional(isolation = Isolation.REPEATABLE_READ)
-    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLock(Long id) throws InterruptedException {
-        ArrayList<Member> memberList = new ArrayList<>();
-        // 1. 조회
-        memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));
+    public List<Member> findMemberByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLock(Long id) {
+        memberRepository.findMembersByIdAfter(id);
 
-        Thread.sleep(3000);
+        sleep(1000);
 
-        // 3. 베타적 잠금을 건후 조회. ( SELECT … FOR UPDATE 구문 )
-        return memberRepository.findMembersByIdAfterForUpdateUsingLock(id);
+        return memberRepository.findMembersByIdAfterForUpdate(id);
     }
+
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public List<Member> selectForUpdateAfterSelect(Long id) {
+        memberRepository.findMembersByIdAfterForUpdate(id);
+        sleep(1000);
+
+        return memberRepository.findMembersByIdAfter(id);
+    }
+
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public List<Member> selectForUpdateAfterSelectForUpdate(Long id)  {
+        memberRepository.findMembersByIdAfterForUpdate(id);
+        sleep(1000);
+
+        return memberRepository.findMembersByIdAfterForUpdate(id);
+    }
+
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public List<Member> selectAfterSelect(Long id) {
+        memberRepository.findMembersByIdAfter(id);
+        sleep(1000);
+
+        return memberRepository.findMembersByIdAfter(id);
+    }
+
 
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
-    public List<Member> findUserByIdTwiceStopOnceInTheMiddleReturnLastSearchResultUsingLockSerializable(Long id) throws InterruptedException {
-        ArrayList<Member> memberList = new ArrayList<>();
-        // 1. 조회
-        memberList.addAll(memberRepository.findMembersByIdGreaterThanEqual(id));
+    public List<Member> selectForUpdateAfterSelectForUpdateSerializable(Long id) {
+        List<Member> members = memberRepository.findMembersByIdAfter(id);
+        log.info("*****첫번째 Members : {}*****", members);
+        sleep(3000);
 
-        Thread.sleep(3000);
-
-        // 3. 베타적 잠금을 건후 조회. ( SELECT … FOR UPDATE 구문 )
-        return memberRepository.findMembersByIdAfterForUpdateUsingLock(id);
+        List<Member> secondMembers = memberRepository.findMembersByIdAfterForUpdate(id);
+        log.info("*****두번째 Members : {}*****", secondMembers);
+        return secondMembers;
     }
 
 
-
-
-
-    public Member saveMemberDelay(MemberRequest memberRequest) throws InterruptedException {
-        Thread.sleep(3000);
+    @Transactional(isolation = Isolation.REPEATABLE_READ)
+    public Member saveMember(MemberRequest memberRequest)  {
         Member memberRequestEntity = memberRequest.toEntity();
-        //2. 새로운 member 저장 후 commit
+
         return memberRepository.saveAndFlush(memberRequestEntity);
     }
 
+
+    public void sleep(int millis)  {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
