@@ -21,10 +21,15 @@ public class User {
 
     private String name;
 
+    private Integer age;
+
     public String updateName(String name) {
         return this.name = name;
     }
 
+    public Integer updateAge(Integer age) {
+        return this.age = age;
+    }
 
 
 }
