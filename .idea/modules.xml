@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/practice.iml" filepath="$PROJECT_DIR$/.idea/modules/practice.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/transaction-readonly/transaction-readonly.iml" filepath="$PROJECT_DIR$/transaction-readonly/transaction-readonly.iml" />
     </modules>
   </component>
 </project>
