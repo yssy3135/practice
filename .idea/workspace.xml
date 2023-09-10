@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a888c2b-8900-4914-ba39-33416c66e9b3" name="Changes" comment="[MOD] 오타수정">
+    <list default="true" id="9a888c2b-8900-4914-ba39-33416c66e9b3" name="Changes" comment="[ADD] transaction readonly setting">
+      <change afterPath="$PROJECT_DIR$/transaction-readonly/src/test/java/com/example/transactionreadonly/MemberTests/MemberTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propagation/src/test/java/com/propagation/service/UserServicePropagationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/propagation/src/test/java/com/propagation/service/UserServicePropagationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/Member/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/repository/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/Member/repository/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/Member/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/dto/MemberRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/Member/service/dto/MemberRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/User/service/dto/MemberResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/main/java/com/example/transactionisolation/Member/service/dto/MemberResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-isolation/src/test/java/com/example/transactionisolation/service/MemberServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-readonly/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-readonly/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-readonly/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-readonly/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +27,12 @@
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/propagation">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/transaction-isolation">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/transaction-readonly">
       <ProjectState />
     </projectState>
   </component>
@@ -45,41 +60,94 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/propagation" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="5724e816-9c80-486f-89cb-fcd85cd217e5" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: -1
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 5
+}]]></component>
   <component name="ProjectId" id="2UYOwvCnlbcsMWu2aMIZFfxrppg" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;0c4f8dac5fb910b3f78474c1b27b8561&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/transaction-readonly",
+    "jdk.selected.JAVA_MODULE": "corretto-17",
+    "last_opened_file_path": "/Users/iyunsu/IdeaProjects/practice/transaction-readonly/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "085bec2aef18435da76ef1cede8372ab",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Gradle.UserServicePropagationTest.Transactional_Nested">
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/transaction-readonly/src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/transaction-readonly/src/main/java/com/example/transactionreadonly" />
+      <recent name="$PROJECT_DIR$/transaction-readonly/src/main/java" />
+      <recent name="$PROJECT_DIR$/transaction-readonly/src/main" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.MemberTest.read_only_일경우_jpql_쿼리시_flush_나갈까">
+    <configuration name="MemberTest.read_only_일경우_jpql_쿼리시_flush_나갈까" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/transaction-readonly" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.example.transactionreadonly.MemberTests.MemberTest.read_only_일경우_jpql_쿼리시_flush_나갈까&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="UserServicePropagationTest.Transactional_Nested" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -152,30 +220,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="UserServicePropagationTest.transactional_not_supported" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/propagation" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.propagation.service.UserServicePropagationTest.transactional_not_supported&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="UserServicePropagationTest.transactional_not_supported_non_tx" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -207,13 +251,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TransactionIsolationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="transaction-isolation.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.transactionisolation.TransactionIsolationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionReadonlyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="transaction-readonly.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.transactionreadonly.TransactionReadonlyApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.MemberTest.read_only_일경우_jpql_쿼리시_flush_나갈까" />
         <item itemvalue="Gradle.UserServicePropagationTest.Transactional_Nested" />
         <item itemvalue="Gradle.UserServicePropagationTest.Transactional_Request_New_no_tx" />
         <item itemvalue="Gradle.UserServicePropagationTest.Transactional_requires_New" />
         <item itemvalue="Gradle.UserServicePropagationTest.transactional_not_supported_non_tx" />
-        <item itemvalue="Gradle.UserServicePropagationTest.transactional_not_supported" />
       </list>
     </recent_temporary>
   </component>
@@ -226,7 +284,18 @@
       <option name="presentableId" value="Default" />
       <updated>1693113288391</updated>
       <workItem from="1693113289460" duration="894000" />
+      <workItem from="1694165693534" duration="3217000" />
+      <workItem from="1694357893120" duration="2394000" />
     </task>
+    <task id="LOCAL-00001" summary="[ADD] transaction readonly setting">
+      <option name="closed" value="true" />
+      <created>1694165909922</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694165909922</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +303,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="[MOD] 오타수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[MOD] 오타수정" />
+    <MESSAGE value="[ADD] transaction readonly setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ADD] transaction readonly setting" />
   </component>
 </project>

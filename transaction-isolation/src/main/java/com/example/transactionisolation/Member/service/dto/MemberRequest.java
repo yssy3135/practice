@@ -1,6 +1,6 @@
-package com.example.transactionisolation.User.service.dto;
+package com.example.transactionisolation.Member.service.dto;
 
-import com.example.transactionisolation.User.domain.Member;
+import com.example.transactionisolation.Member.domain.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

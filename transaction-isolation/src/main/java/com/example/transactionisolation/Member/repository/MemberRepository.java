@@ -1,6 +1,6 @@
-package com.example.transactionisolation.User.repository;
+package com.example.transactionisolation.Member.repository;
 
-import com.example.transactionisolation.User.domain.Member;
+import com.example.transactionisolation.Member.domain.Member;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;

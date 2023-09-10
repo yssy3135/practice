@@ -1,8 +1,8 @@
-package com.example.transactionisolation.User.service;
+package com.example.transactionisolation.Member.service;
 
-import com.example.transactionisolation.User.domain.Member;
-import com.example.transactionisolation.User.repository.MemberRepository;
-import com.example.transactionisolation.User.service.dto.MemberRequest;
+import com.example.transactionisolation.Member.domain.Member;
+import com.example.transactionisolation.Member.repository.MemberRepository;
+import com.example.transactionisolation.Member.service.dto.MemberRequest;
 import jakarta.persistence.EntityManager;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
