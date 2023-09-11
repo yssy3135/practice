@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/custom-validator.main.iml" filepath="$PROJECT_DIR$/.idea/modules/custom-validator.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" />
     </modules>

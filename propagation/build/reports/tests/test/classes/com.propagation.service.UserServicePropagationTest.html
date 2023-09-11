@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - UserServicePropagationTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>UserServicePropagationTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.propagation.service.html">com.propagation.service</a> &gt; UserServicePropagationTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.146s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">Transactional Propagation Nested - db 지원 여부와 jdbc 드라이버에서 지원해주어야 한다. 그렇지 않으면 exception이 발생한다. 트랜잭션 존재시 REQUIRED와 마친가지로 새 트랜잭션 생성, 아니면 savePoint를 걸로 이후 트랜잭션을 수행한다.( 실패시 save point 까지 롤백되며, savePoint이후는 트랜잭션 처리가 된다.)</td>
+<td class="success">Transactional_Nested()</td>
+<td class="success">0.146s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>12:13:31.041 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+12:13:31.046 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+12:13:31.059 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.propagation.service.UserServicePropagationTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+12:13:31.063 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.propagation.service.UserServicePropagationTest], using SpringBootContextLoader
+12:13:31.065 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.propagation.service.UserServicePropagationTest]: class path resource [com/propagation/service/UserServicePropagationTest-context.xml] does not exist
+12:13:31.065 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.propagation.service.UserServicePropagationTest]: class path resource [com/propagation/service/UserServicePropagationTestContext.groovy] does not exist
+12:13:31.066 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.propagation.service.UserServicePropagationTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+12:13:31.066 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.propagation.service.UserServicePropagationTest]: UserServicePropagationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:13:31.095 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.propagation.service.UserServicePropagationTest]
+12:13:31.125 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/iyunsu/IdeaProjects/practice/propagation/build/classes/java/main/com/propagation/PropagationApplication.class]
+12:13:31.125 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.propagation.PropagationApplication for test class com.propagation.service.UserServicePropagationTest
+12:13:31.168 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.propagation.service.UserServicePropagationTest]: using defaults.
+12:13:31.168 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+12:13:31.172 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [javax/servlet/ServletContext]
+12:13:31.175 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1804f60d, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@3a80515c, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@547e29a4, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1c807b1d, org.springframework.test.context.support.DirtiesContextTestExecutionListener@238b521e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1b39fd82, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3e2fc448, org.springframework.test.context.event.EventPublishingTestExecutionListener@21680803, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@588ab592, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@c8b96ec, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4cc61eb1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2d8f2f3a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2024293c, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@7048f722]
+12:13:31.177 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@51c929ae testClass = UserServicePropagationTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c8bdd5b testClass = UserServicePropagationTest, locations = '{}', classes = '{class com.propagation.PropagationApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@6aecbb8d, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@62163b39, [ImportsContextCustomizer@29d2d081 key = [com.propagation.User.util.LogAOP]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@422c3c7a, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@75e91545, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4fbda97b, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4bff7da0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+12:13:31.182 [Test worker] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@51c929ae testClass = UserServicePropagationTest, testInstance = com.propagation.service.UserServicePropagationTest@4acf72b6, testMethod = [null], testException = [null], mergedContextConfiguration = [MergedContextConfiguration@3c8bdd5b testClass = UserServicePropagationTest, locations = '{}', classes = '{class com.propagation.PropagationApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@6aecbb8d, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@62163b39, [ImportsContextCustomizer@29d2d081 key = [com.propagation.User.util.LogAOP]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@422c3c7a, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@75e91545, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4fbda97b, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@4bff7da0], contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -&gt; false]]].
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v2.7.14)
+
+2023-08-24 12:13:31.353  INFO 83259 --- [    Test worker] c.p.service.UserServicePropagationTest   : Starting UserServicePropagationTest using Java 11.0.16.1 on iyunsuui-MacBookPro.local with PID 83259 (started by iyunsu in /Users/iyunsu/IdeaProjects/practice/propagation)
+2023-08-24 12:13:31.353  INFO 83259 --- [    Test worker] c.p.service.UserServicePropagationTest   : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2023-08-24 12:13:31.575  INFO 83259 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-08-24 12:13:31.604  INFO 83259 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interfaces.
+2023-08-24 12:13:31.906  INFO 83259 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-08-24 12:13:31.936  INFO 83259 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-08-24 12:13:32.015  INFO 83259 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-08-24 12:13:32.066  INFO 83259 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-08-24 12:13:32.272  INFO 83259 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-08-24 12:13:32.281  INFO 83259 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2023-08-24 12:13:32.587  INFO 83259 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-08-24 12:13:32.591  INFO 83259 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-08-24 12:13:32.995  INFO 83259 --- [    Test worker] c.p.service.UserServicePropagationTest   : Started UserServicePropagationTest in 1.802 seconds (JVM running for 2.335)
+2023-08-24 12:13:33.122  INFO 83259 --- [    Test worker] com.propagation.User.util.LogAOP         : 
+2023-08-24 12:13:33.123  INFO 83259 --- [    Test worker] com.propagation.User.util.LogAOP         : **********call execution(UserServicePropagationNested.updateParent(..)) tx**********
+2023-08-24 12:13:33.123  INFO 83259 --- [    Test worker] com.propagation.User.util.LogAOP         : [tx start] void com.propagation.User.service.nested.UserServicePropagationNested.updateParent(Long)
+2023-08-24 12:13:33.123  INFO 83259 --- [    Test worker] com.propagation.User.util.LogAOP         : [tx name] = com.propagation.User.service.nested.UserServicePropagationNested.updateParent
+2023-08-24 12:13:33.123  INFO 83259 --- [    Test worker] com.propagation.User.util.LogAOP         : [tx active] = true
+2023-08-24 12:13:33.137  INFO 83259 --- [    Test worker] com.propagation.User.util.LogAOP         : **********parent void com.propagation.User.service.nested.UserServicePropagationNested.updateParent(Long) end**********
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.2.1</a> at 2023. 8. 24. 오후 12:13:33</p>
+</div>
+</div>
+</body>
+</html>
