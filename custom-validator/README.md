@@ -12,8 +12,8 @@
 
 - ConstraintValidator를 상속받은 클래스를 전달해줄 수 있다.
 - 여러개의 ConstraintValidator상속 클래스를 전달 할 수 있다.
-
-![image](https://github.com/yssy3135/practice/assets/62733005/722a615c-f456-4d3c-a2b8-da044feab73c)
+- 
+![1.png](image%2F1.png)
 
 ### 2. ConstraintValidator
 
@@ -21,8 +21,8 @@
 - 특정 Annotation을 통해 Validator를 적용시킬 수 있고, 적용할 Class target을 설정할 수 있다.
 - initialize 메소드를 통해 validator를 초기화
 - isValid메소드를 통해 검증
-
-![image](https://github.com/yssy3135/practice/assets/62733005/bbe7bc20-4169-4622-a7c9-6c3ff582dd74)
+- 
+![2.png](image%2F2.png)
 
 # 구현.
 
