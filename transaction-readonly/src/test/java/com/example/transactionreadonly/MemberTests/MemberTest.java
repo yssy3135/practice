@@ -2,6 +2,7 @@ package com.example.transactionreadonly.MemberTests;
 
 import com.example.transactionreadonly.Member.domain.Member;
 import com.example.transactionreadonly.Member.service.MemberService;
+import com.example.transactionreadonly.Member.service.ReadOnlyMemberService;
 import com.example.transactionreadonly.Member.service.dto.MemberRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Assertions;
@@ -19,6 +20,9 @@ public class MemberTest {
 
     @Autowired
     MemberService memberService;
+
+    @Autowired
+    ReadOnlyMemberService readOnlyMemberService;
 
     @BeforeEach
     public void before() {
@@ -83,9 +87,38 @@ public class MemberTest {
                         .name("tester")
                         .build());
 
-        Optional<Member> updatedMemberOptional = memberService.readOnlyuUpdateMember(member.getId(), "update");
+        Optional<Member> updatedMemberOptional = memberService.readOnlyUpdateMember(member.getId(), "update");
 
         Assertions.assertFalse(updatedMemberOptional.isPresent());
+    }
+
+
+    @Test
+    public void read_only_Transaction_propagation_Exception_발생하지_않음() {
+        Member member = memberService.saveMember(
+                MemberRequest.builder()
+                        .name("tester")
+                        .build());
+        Member updatedMember = readOnlyMemberService.updateMemberRequiresNew(member.getId(), "updated");
+        Assertions.assertEquals("updated", updatedMember.getName());
 
     }
+
+
+    @Test
+    public void read_only_Transaction_propagation_Exception_발생() {
+        Member member = memberService.saveMember(
+                MemberRequest.builder()
+                        .name("tester")
+                        .build());
+
+        Assertions.assertThrows(JpaSystemException.class, () -> readOnlyMemberService.saveMember("newMember"));
+
+
+    }
+
+
+
+
+
 }

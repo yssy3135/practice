@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.example.transactionisolation.service.MemberServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-02T09:52:24" hostname="iyunsuui-MacBookPro.local" time="1.401">
+<testsuite name="com.example.transactionisolation.service.MemberServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-18T06:40:00" hostname="iyunsuui-MacBookPro.local" time="3.412">
   <properties/>
-  <testcase name="REPEATABLE_READ SELECT FOR UPDATE 이후 SELECT 조회 팬텀리드X MVCC 때문" classname="com.example.transactionisolation.service.MemberServiceTest" time="1.401"/>
-  <system-out><![CDATA[18:52:22.757 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.transactionisolation.service.MemberServiceTest]: MemberServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-18:52:22.803 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.transactionisolation.TransactionIsolationApplication for test class com.example.transactionisolation.service.MemberServiceTest
+  <testcase name="REPEATABLE_READ NON-REPEATABLE READ 현상 발생 안함." classname="com.example.transactionisolation.service.MemberServiceTest" time="3.412"/>
+  <system-out><![CDATA[15:39:58.634 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.transactionisolation.service.MemberServiceTest]: MemberServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:39:58.681 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.transactionisolation.TransactionIsolationApplication for test class com.example.transactionisolation.service.MemberServiceTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,104 +13,117 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.1.2)
 
-2023-09-02T18:52:22.998+09:00  INFO 74169 --- [    Test worker] c.e.t.service.MemberServiceTest          : Starting MemberServiceTest using Java 17.0.8 with PID 74169 (started by iyunsu in /Users/iyunsu/IdeaProjects/practice/transaction-isolation)
-2023-09-02T18:52:22.999+09:00  INFO 74169 --- [    Test worker] c.e.t.service.MemberServiceTest          : No active profile set, falling back to 1 default profile: "default"
-2023-09-02T18:52:23.251+09:00  INFO 74169 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2023-09-02T18:52:23.276+09:00  INFO 74169 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 1 JPA repository interfaces.
-2023-09-02T18:52:23.454+09:00 DEBUG 74169 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
-2023-09-02T18:52:23.461+09:00  INFO 74169 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2023-09-02T18:52:23.483+09:00  INFO 74169 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.6.Final
-2023-09-02T18:52:23.484+09:00  INFO 74169 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
-2023-09-02T18:52:23.543+09:00  INFO 74169 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-02T18:52:23.604+09:00  INFO 74169 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2023-09-02T18:52:23.613+09:00  INFO 74169 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-09-02T18:52:23.809+09:00  INFO 74169 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7de6549d
-2023-09-02T18:52:23.810+09:00  INFO 74169 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-09-02T18:52:23.833+09:00  WARN 74169 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2023-09-02T18:52:23.904+09:00  INFO 74169 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
-2023-09-02T18:52:24.167+09:00  INFO 74169 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2023-09-02T18:52:24.173+09:00 DEBUG 74169 --- [    Test worker] org.hibernate.SQL                        : 
+2023-09-18T15:39:58.875+09:00  INFO 85273 --- [    Test worker] c.e.t.service.MemberServiceTest          : Starting MemberServiceTest using Java 17.0.7 with PID 85273 (started by iyunsu in /Users/iyunsu/IdeaProjects/practice/transaction-isolation)
+2023-09-18T15:39:58.876+09:00  INFO 85273 --- [    Test worker] c.e.t.service.MemberServiceTest          : No active profile set, falling back to 1 default profile: "default"
+2023-09-18T15:39:59.162+09:00  INFO 85273 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-09-18T15:39:59.187+09:00  INFO 85273 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interfaces.
+2023-09-18T15:39:59.359+09:00 DEBUG 85273 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2023-09-18T15:39:59.369+09:00  INFO 85273 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-09-18T15:39:59.391+09:00  INFO 85273 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.6.Final
+2023-09-18T15:39:59.392+09:00  INFO 85273 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-09-18T15:39:59.449+09:00  INFO 85273 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-18T15:39:59.504+09:00  INFO 85273 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-09-18T15:39:59.511+09:00  INFO 85273 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-09-18T15:39:59.700+09:00  INFO 85273 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1fd37440
+2023-09-18T15:39:59.701+09:00  INFO 85273 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-09-18T15:39:59.724+09:00  WARN 85273 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2023-09-18T15:39:59.799+09:00  INFO 85273 --- [    Test worker] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-09-18T15:40:00.069+09:00  INFO 85273 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-09-18T15:40:00.075+09:00 DEBUG 85273 --- [    Test worker] org.hibernate.SQL                        : 
     drop table if exists member
-2023-09-02T18:52:24.182+09:00 DEBUG 74169 --- [    Test worker] org.hibernate.SQL                        : 
+2023-09-18T15:40:00.098+09:00 DEBUG 85273 --- [    Test worker] org.hibernate.SQL                        : 
     create table member (
         id bigint not null auto_increment,
         name varchar(255),
         primary key (id)
     ) engine=InnoDB
-2023-09-02T18:52:24.189+09:00  INFO 74169 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2023-09-02T18:52:24.234+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.252+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.273+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.306+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.330+09:00  INFO 74169 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2023-09-02T18:52:24.397+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.465+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.468+09:00 DEBUG 74169 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
-2023-09-02T18:52:24.565+09:00  WARN 74169 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2023-09-02T18:52:24.741+09:00  INFO 74169 --- [    Test worker] c.e.t.service.MemberServiceTest          : Started MemberServiceTest in 1.872 seconds (process running for 2.376)
-2023-09-02T18:52:25.043+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.example.transactionisolation.User.service.MemberService.saveMember]: PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
-2023-09-02T18:52:25.043+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Opened new EntityManager [SessionImpl(1986088913<open>)] for JPA transaction
-2023-09-02T18:52:25.048+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@74863aec]
-2023-09-02T18:52:25.051+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1986088913<open>)] for JPA transaction
-2023-09-02T18:52:25.051+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
-2023-09-02T18:52:25.061+09:00 DEBUG 74169 --- [    Test worker] org.hibernate.SQL                        : 
+2023-09-18T15:40:00.110+09:00  INFO 85273 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-09-18T15:40:00.156+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.173+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.193+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.227+09:00  INFO 85273 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2023-09-18T15:40:00.294+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.385+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.389+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.391+09:00 DEBUG 85273 --- [    Test worker] tor$SharedEntityManagerInvocationHandler : Creating new EntityManager for shared EntityManager invocation
+2023-09-18T15:40:00.470+09:00  WARN 85273 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-09-18T15:40:00.628+09:00  INFO 85273 --- [    Test worker] c.e.t.service.MemberServiceTest          : Started MemberServiceTest in 1.887 seconds (process running for 2.375)
+2023-09-18T15:40:00.935+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.example.transactionisolation.Member.service.MemberService.saveMember]: PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+2023-09-18T15:40:00.935+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Opened new EntityManager [SessionImpl(1986088913<open>)] for JPA transaction
+2023-09-18T15:40:00.939+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@74863aec]
+2023-09-18T15:40:00.941+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(1986088913<open>)] for JPA transaction
+2023-09-18T15:40:00.941+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
+2023-09-18T15:40:00.952+09:00 DEBUG 85273 --- [    Test worker] org.hibernate.SQL                        : 
     /* insert for
-        com.example.transactionisolation.User.domain.Member */insert 
+        com.example.transactionisolation.Member.domain.Member */insert 
     into
         member (name) 
     values
         (?)
-2023-09-02T18:52:25.079+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
-2023-09-02T18:52:25.079+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1986088913<open>)]
-2023-09-02T18:52:25.082+09:00 DEBUG 74169 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager [SessionImpl(1986088913<open>)] after transaction
-2023-09-02T18:52:25.083+09:00 DEBUG 74169 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.example.transactionisolation.User.service.MemberService.selectForUpdateAfterSelect]: PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
-2023-09-02T18:52:25.083+09:00 DEBUG 74169 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Opened new EntityManager [SessionImpl(875741200<open>)] for JPA transaction
-2023-09-02T18:52:25.084+09:00 DEBUG 74169 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@300d524e]
-2023-09-02T18:52:25.125+09:00 DEBUG 74169 --- [onPool-worker-1] org.hibernate.SQL                        : 
+2023-09-18T15:40:00.977+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2023-09-18T15:40:00.977+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(1986088913<open>)]
+2023-09-18T15:40:00.979+09:00 DEBUG 85273 --- [    Test worker] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager [SessionImpl(1986088913<open>)] after transaction
+2023-09-18T15:40:00.980+09:00 DEBUG 85273 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.example.transactionisolation.Member.service.MemberService.findMemberRepeatable]: PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
+2023-09-18T15:40:00.980+09:00 DEBUG 85273 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Opened new EntityManager [SessionImpl(945816174<open>)] for JPA transaction
+2023-09-18T15:40:00.981+09:00 DEBUG 85273 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@36a7eb12]
+2023-09-18T15:40:01.017+09:00 DEBUG 85273 --- [onPool-worker-2] org.hibernate.SQL                        : 
     /* select
         m 
     from
         Member m 
     where
-        m.id >= :id */ select
+        m.name = :name */ select
             m1_0.id,
             m1_0.name 
         from
             member m1_0 
         where
-            m1_0.id>=? for update
-2023-09-02T18:52:25.585+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.example.transactionisolation.User.service.MemberService.saveMember]: PROPAGATION_REQUIRED,ISOLATION_REPEATABLE_READ
-2023-09-02T18:52:25.586+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Opened new EntityManager [SessionImpl(75195743<open>)] for JPA transaction
-2023-09-02T18:52:25.588+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@abc8ba0]
-2023-09-02T18:52:25.588+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(75195743<open>)] for JPA transaction
-2023-09-02T18:52:25.588+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
-2023-09-02T18:52:25.589+09:00 DEBUG 74169 --- [onPool-worker-2] org.hibernate.SQL                        : 
-    /* insert for
-        com.example.transactionisolation.User.domain.Member */insert 
-    into
-        member (name) 
-    values
-        (?)
-2023-09-02T18:52:26.138+09:00 DEBUG 74169 --- [onPool-worker-1] org.hibernate.SQL                        : 
+            m1_0.name=?
+2023-09-18T15:40:01.019+09:00  INFO 85273 --- [onPool-worker-2] c.e.t.Member.service.MemberService       : *****첫번쨰 Member : Optional.empty*****
+2023-09-18T15:40:01.481+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [com.example.transactionisolation.Member.service.MemberService.immediateUpdateMember]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2023-09-18T15:40:01.481+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Opened new EntityManager [SessionImpl(2027862307<open>)] for JPA transaction
+2023-09-18T15:40:01.483+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7ce122e0]
+2023-09-18T15:40:01.484+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(2027862307<open>)] for JPA transaction
+2023-09-18T15:40:01.484+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
+2023-09-18T15:40:01.491+09:00 DEBUG 85273 --- [onPool-worker-1] org.hibernate.SQL                        : 
+    select
+        m1_0.id,
+        m1_0.name 
+    from
+        member m1_0 
+    where
+        m1_0.id=?
+2023-09-18T15:40:01.494+09:00  INFO 85273 --- [onPool-worker-1] c.e.t.Member.service.MemberService       : *****update Member close*****
+2023-09-18T15:40:01.495+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(2027862307<open>)] for JPA transaction
+2023-09-18T15:40:01.495+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
+2023-09-18T15:40:01.500+09:00 DEBUG 85273 --- [onPool-worker-1] org.hibernate.SQL                        : 
+    /* update
+        for com.example.transactionisolation.Member.domain.Member */update member 
+    set
+        name=? 
+    where
+        id=?
+2023-09-18T15:40:01.503+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2023-09-18T15:40:01.503+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(2027862307<open>)]
+2023-09-18T15:40:01.504+09:00 DEBUG 85273 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager [SessionImpl(2027862307<open>)] after transaction
+2023-09-18T15:40:04.032+09:00 DEBUG 85273 --- [onPool-worker-2] org.hibernate.SQL                        : 
     /* select
         m 
     from
         Member m 
     where
-        m.id >= :id */ select
+        m.name = :name */ select
             m1_0.id,
             m1_0.name 
         from
             member m1_0 
         where
-            m1_0.id>=?
-2023-09-02T18:52:26.140+09:00 DEBUG 74169 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
-2023-09-02T18:52:26.140+09:00 DEBUG 74169 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(875741200<open>)]
-2023-09-02T18:52:26.141+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
-2023-09-02T18:52:26.141+09:00 DEBUG 74169 --- [onPool-worker-1] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager [SessionImpl(875741200<open>)] after transaction
-2023-09-02T18:52:26.141+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(75195743<open>)]
-2023-09-02T18:52:26.142+09:00 DEBUG 74169 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager [SessionImpl(75195743<open>)] after transaction
-2023-09-02T18:52:26.143+09:00  INFO 74169 --- [    Test worker] c.e.t.service.MemberServiceTest          : members [Member(id=1, name=before)]
+            m1_0.name=?
+2023-09-18T15:40:04.035+09:00  INFO 85273 --- [onPool-worker-2] c.e.t.Member.service.MemberService       : *****두번쨰 Member : Optional.empty*****
+2023-09-18T15:40:04.036+09:00 DEBUG 85273 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2023-09-18T15:40:04.036+09:00 DEBUG 85273 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(945816174<open>)]
+2023-09-18T15:40:04.038+09:00 DEBUG 85273 --- [onPool-worker-2] o.s.orm.jpa.JpaTransactionManager        : Closing JPA EntityManager [SessionImpl(945816174<open>)] after transaction
+2023-09-18T15:40:04.038+09:00  INFO 85273 --- [    Test worker] c.e.t.service.MemberServiceTest          : members null
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

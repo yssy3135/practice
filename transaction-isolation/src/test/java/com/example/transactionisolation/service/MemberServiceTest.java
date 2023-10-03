@@ -55,7 +55,6 @@ public class MemberServiceTest {
         CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
             sleep(500);
             Member foundMember = memberService.findMemberBy(savedMember.getId());
-            log.info("found member : {}", foundMember.toString());
             return foundMember;
 
         });
@@ -101,8 +100,7 @@ public class MemberServiceTest {
         });
 
         CompletableFuture<Member> foundMemberResult = CompletableFuture.supplyAsync(() -> {
-            Member member= null;
-            member = memberService.findUserByIdTwiceStopOnceInTheMiddleReturnResults("updated");
+            Member member =  memberService.findUserByIdTwiceStopOnceInTheMiddleReturnResults("updated");
 
             return member;
 
