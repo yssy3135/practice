@@ -1,5 +1,7 @@
 package com.propagation.service;
 
+import com.propagation.User.domain.User;
+import com.propagation.User.service.UserService;
 import com.propagation.User.service.madatory.UserServicePropagationMadatory;
 import com.propagation.User.service.nested.UserServicePropagationNested;
 import com.propagation.User.service.never.UserServicePropagationNever;
@@ -8,6 +10,8 @@ import com.propagation.User.service.requires_new.UserServicePropagationRequiresN
 import com.propagation.User.service.required.UserServicePropagationRequired;
 import com.propagation.User.service.supports.UserServicePropagationSupports;
 import com.propagation.User.util.LogAOP;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +21,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.transaction.IllegalTransactionStateException;
 import org.springframework.transaction.NestedTransactionNotSupportedException;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -46,15 +51,18 @@ public class UserServicePropagationTest {
     @Autowired
     UserServicePropagationNested userServicePropagationNested;
 
+    @Autowired
+    UserService userService;
+
     @BeforeEach
     public void saveUser() {
         userServicePropagationRequired.saveUser();
     }
 
-//    @AfterEach
-//    public void deleteUser() {
-//        userServicePropagationRequired.deleteUser();
-//    }
+    @AfterEach
+    public void deleteUser() {
+        userServicePropagationRequired.deleteUser();
+    }
 
     @Test
     @DisplayName("Transactional_required는 기존 트랜잭션 존재시 기존 트랜잭션을 이용한다.")
@@ -157,7 +165,17 @@ public class UserServicePropagationTest {
         });
     }
 
+    @Test
+    @DisplayName("같은 서비스에서 private 메소드를 호출해도 Transaction이 적용된다.")
+    public void Transactional_private() {
+        try {
+            userService.updateParent(1L);
+        }catch (Exception e) {
 
+        }
+        User user = userService.findUser(1L);
 
+        assertThat(user.getName()).isEqualTo("save");
+    }
 
 }
