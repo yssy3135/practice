@@ -15,9 +15,11 @@
 ************parent************
 
 ![img.png](images%2Fimg.png)
+
 **child**
 
 ![img_1.png](images%2Fimg_1.png)
+
 ******Result******
 
 ![img_2.png](images%2Fimg_2.png)
@@ -105,21 +107,27 @@ tx active는 false로 트랜잭션만 생성되고 적용은 되지 않았다.
 |  트랜잭션 존재시 exception을 발생한다.. | 정상적으로 수행된다( 트랜잭션 없이 수행된다.) |
 
 ************Parent************
+
 ![img_13.png](images%2Fimg_13.png)
 
 **********Child**********
 
 ![img_14.png](images%2Fimg_14.png)
+
 **Result**
 
 **************************************************기존 트랜잭션 존재**************************************************
+
 ![img_15.png](images%2Fimg_15.png)
+
 ![img_16.png](images%2Fimg_16.png)
+
 테스트를 실행한 결과 성공한 것을 확인할 수 있다.
 
 기존의 트랜잭션이 존재할 경우 IllegalTransactionStateException을 발생시킨다는 것을 알 수 있다.
 
 ***************************************************기존 트랜잭션 미존재***************************************************
+
 ![img_17.png](images%2Fimg_17.png)
 
 트랜잭션 name 이 null이 아니기 때문에 트랜잭션이 적용되다고 생각 할 수 있다.
@@ -137,6 +145,7 @@ tx active는 false로 트랜잭션만 생성되고 적용은 되지 않았다.
 ************Parent************
 
 ![img_18.png](images%2Fimg_18.png)
+
 **********Child**********
 
 ![img_19.png](images%2Fimg_19.png)
@@ -179,9 +188,11 @@ tx active는 false로 트랜잭션만 생성되고 적용은 되지 않았다.
 | 새로운 트랜잭션을 생성하고 수행한다. | 새로운 트랜잭션을 생성하고 수행한다. |
 
 ************Parent************
+
 ![img_25.png](images%2Fimg_25.png)
 
 **********Child**********
+
 ![img_26.png](images%2Fimg_26.png)
 
 **Result**
