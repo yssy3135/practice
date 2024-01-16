@@ -42,7 +42,7 @@ class Operator1Test {
         StepVerifier.create(operator1.fluxFlatMap2())
                 .expectNextCount(81)
                 .verifyComplete();
-
-
     }
+
+
 }
