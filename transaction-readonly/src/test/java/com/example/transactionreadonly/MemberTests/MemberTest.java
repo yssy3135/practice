@@ -56,7 +56,7 @@ public class MemberTest {
      * 변경되었는지 감지 할 수 없다.
      */
     @Test
-    public void read_only_일경우_jpql_쿼리시_flush_나감_그리고_dirty_checking_안일어난다() {
+    public void read_only_일경우_jpql_쿼리시_dirty_checking_일어나지않는다() {
         Member member = memberService.updateMemberNotSave("updated");
 
         Optional<Member> foundMemberOptional = memberService.findMember("updated");
@@ -70,7 +70,6 @@ public class MemberTest {
      */
     @Test
     public void read_only_일경우_insert_불가() {
-
         Assertions.assertThrows(JpaSystemException.class,() -> {memberService.findAndInsert(MemberRequest.builder().name("insert").build());});
     }
 
