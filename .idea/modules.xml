@@ -3,15 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/practice.iml" filepath="$PROJECT_DIR$/.idea/practice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/propagation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/propagation.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-isolation.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-readonly.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-readonly.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-readonly.main.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-readonly.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/transaction-readonly.test.iml" filepath="$PROJECT_DIR$/.idea/modules/transaction-readonly.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webflux/webflux.iml" filepath="$PROJECT_DIR$/webflux/webflux.iml" />
     </modules>
   </component>
 </project>
