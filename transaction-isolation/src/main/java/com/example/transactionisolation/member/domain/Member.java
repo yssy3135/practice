@@ -1,4 +1,4 @@
-package com.example.transactionisolation.Member.domain;
+package com.example.transactionisolation.member.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
