@@ -4,11 +4,29 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="externalProjectPath" value="$PROJECT_DIR$/fetch-join" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/custom-validator" />
         <option name="gradleJvm" value="zulu-17" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/fetch-join" />
+            <option value="$PROJECT_DIR$/custom-validator" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/pubsub" />
+        <option name="gradleJvm" value="zulu-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/pubsub" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/reactor" />
+        <option name="gradleJvm" value="zulu-17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/reactor" />
           </set>
         </option>
       </GradleProjectSettings>
