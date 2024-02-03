@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -32,5 +31,14 @@ public class TeamService {
         Team saveTeam = teamRepository.saveAndFlush(team);
     }
 
+    @Transactional
+    public Team findTeamExceptMemberName(String teamName, String memberName) {
+        Team team = teamRepository.findByTeamExceptMemberName(teamName, memberName)
+                .orElseThrow(() -> new RuntimeException("not found"));
+
+        team.changeName("나뭇잎마을");
+
+        return team;
+    }
 
 }

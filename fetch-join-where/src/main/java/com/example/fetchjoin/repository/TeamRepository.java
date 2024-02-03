@@ -12,7 +12,7 @@ import java.util.Optional;
 public interface TeamRepository extends JpaRepository<Team, Long> {
 
     @Query("SELECT t " +
-            "FROM Team t LEFT JOIN FETCH t.members m " +
+            "FROM Team t JOIN FETCH t.members m " +
             "WHERE t.name = :teamName AND m.name != :memberName")
     Optional<Team> findByTeamExceptMemberName(String teamName, String memberName);
 
