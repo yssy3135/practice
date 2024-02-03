@@ -1,8 +1,8 @@
 package com.example.transactionisolation.service;
 
-import com.example.transactionisolation.Member.domain.Member;
-import com.example.transactionisolation.Member.service.MemberService;
-import com.example.transactionisolation.Member.service.dto.MemberRequest;
+import com.example.transactionisolation.member.domain.Member;
+import com.example.transactionisolation.member.service.MemberService;
+import com.example.transactionisolation.member.service.dto.MemberRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
