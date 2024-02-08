@@ -13,6 +13,8 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class UserRepositoryImpl implements UserRepository{
 
+
+
     ConcurrentHashMap<Long, User> userHashMap = new ConcurrentHashMap<>();
     private AtomicLong  sequence = new AtomicLong(1L);
 
