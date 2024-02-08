@@ -1,27 +1,35 @@
 package com.example.webflux.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
 
-//entity
-@Data
+@Table("posts")
+@Getter
 @Builder
-@AllArgsConstructor
-@Table("users")
-public class User {
+public class Post {
     @Id
     private Long id;
-    private String name;
-    private String email;
+
+    @Column("user_id")
+    private Long userId;
+
+    private String title;
+
+    private String content;
+
+    @Column("created_at")
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime createAt;
+
+    @Column("updated_at")
     @LastModifiedDate
     private LocalDateTime updatedAt;
+
 }
