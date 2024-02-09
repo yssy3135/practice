@@ -1,6 +1,6 @@
 package com.example.webflux.controller;
 
-import com.example.webflux.dto.PostResponse;
+import com.example.webflux.dto.response.PostResponse;
 import com.example.webflux.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

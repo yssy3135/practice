@@ -1,42 +1,30 @@
-package com.example.webflux.dto;
+package com.example.webflux.dto.response;
 
 import com.example.webflux.domain.Post;
-import com.example.webflux.service.PostServiceV2;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class PostResponseV2 {
+public class UserPostResponse {
 
     private Long id;
-
-    private Long userId;
-
+    private String username;
     private String title;
-
     private String content;
-
     private LocalDateTime createAt;
-
     private LocalDateTime updatedAt;
 
-    public static PostResponseV2 of(Post post) {
-        return PostResponseV2.builder()
+    public static UserPostResponse of(Post post) {
+        return UserPostResponse.builder()
                 .id(post.getId())
-                .userId(post.getUserId())
+                .username("TODO")
                 .title(post.getTitle())
                 .content(post.getContent())
-                .createAt(post.getCreateAt())
+                .createAt(post.getCreatedAt())
                 .updatedAt(post.getUpdatedAt())
                 .build();
     }
-
 }

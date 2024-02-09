@@ -21,7 +21,6 @@ public class UserService {
         return userR2dbcRepository.save(User.builder().name(name).email(email).build());
     }
 
-
     public Flux<User> findAll() {
         return userR2dbcRepository.findAll();
     }
@@ -32,6 +31,10 @@ public class UserService {
 
     public Mono<Void> deleteById(Long id) {
         return userR2dbcRepository.deleteById(id);
+    }
+
+    public Mono<Void> deleteByName(String name) {
+        return userR2dbcRepository.deleteByName(name);
     }
 
     public Mono<User> update(Long id, String name, String email) {

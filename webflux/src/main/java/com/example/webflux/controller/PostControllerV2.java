@@ -1,6 +1,6 @@
 package com.example.webflux.controller;
 
-import com.example.webflux.dto.PostResponseV2;
+import com.example.webflux.dto.response.PostResponseV2;
 import com.example.webflux.dto.request.PostCreateRequest;
 import com.example.webflux.service.PostServiceV2;
 import lombok.RequiredArgsConstructor;
