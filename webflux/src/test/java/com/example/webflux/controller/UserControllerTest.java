@@ -1,24 +1,20 @@
 package com.example.webflux.controller;
 
 import com.example.webflux.domain.User;
-import com.example.webflux.dto.UserCreateRequest;
-import com.example.webflux.dto.UserResponse;
+import com.example.webflux.dto.request.UserCreateRequest;
+import com.example.webflux.dto.response.UserResponse;
 import com.example.webflux.service.UserService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebFlux;
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.awt.print.Pageable;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,7 +96,7 @@ class UserControllerTest {
 
     @Test
     void deleteById() {
-        Mockito.when(userService.deleteById(Mockito.anyLong())).thenReturn(Mono.just(1));
+        Mockito.when(userService.deleteById(Mockito.anyLong()));
 
         webTestClient.delete().uri("/users/1")
                 .exchange()

@@ -1,4 +1,4 @@
-package com.example.webflux.dto;
+package com.example.webflux.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

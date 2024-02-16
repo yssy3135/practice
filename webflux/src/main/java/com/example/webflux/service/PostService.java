@@ -1,8 +1,7 @@
 package com.example.webflux.service;
 
 import com.example.webflux.client.PostClient;
-import com.example.webflux.dto.PostResponse;
-import com.example.webflux.repository.PostR2dbcRepository;
+import com.example.webflux.dto.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

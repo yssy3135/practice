@@ -1,6 +1,6 @@
 package com.example.webflux.client;
 
-import com.example.webflux.dto.PostResponse;
+import com.example.webflux.dto.response.PostResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

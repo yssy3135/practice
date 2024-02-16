@@ -1,4 +1,4 @@
-package com.example.webflux.dto;
+package com.example.webflux.dto.response;
 
 import com.example.webflux.domain.User;
 import lombok.Builder;
